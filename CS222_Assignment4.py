@@ -7,13 +7,13 @@ def main():
     context = ssl._create_unverified_context()
     response = urlopen(pointUrl, context = context)
     pointData = json.loads(response.read())
-    forecastUrl = pointData["properties"], ["forecast"]
+    forecastUrl = pointData["properties"] ["forecast"]
     response = urlopen(forecastUrl, context = context)
     forecastData = json.loads(response.read())
-    periods = forecastData["properties"], ["periods"]
+    periods = forecastData["properties"] ["periods"]
 
     for period in periods[:14]: 
-        print(period["name"] + ": " + period["temperature"] + " Farenheit")
+        print(period["name"] + ": " + str(period["temperature"]) + " Farenheit")
         print("Details: " + period["detailedForecast"] + "\n")
 
 main()
