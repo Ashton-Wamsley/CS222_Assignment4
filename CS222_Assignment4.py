@@ -25,3 +25,20 @@ def main():
         print(printForecast(period))
 
 main()
+
+import unittest
+
+class TestForectCast(unittest.TestCase):
+    def testPrintForecast(self):
+        sample = {
+            "name" : "Tonight", "temperature" : 65, "detailedForecast": "Clear skies with light winds."
+        }
+        expected = "Tonight: 65 Fahrenheit\nDetails: Clear skies with light winds.\n"
+        self.assertEqual(printForecast(sample), expected)
+    
+    def testGetForecastUrl(self):
+        testUrl = getForecastUrl()
+        self.assertTrue(testUrl.startswith("https://api.weather.gov/gridpoints/"))
+    
+if __name__ == "__main__":
+    unittest.main()
